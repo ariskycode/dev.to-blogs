@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: "First post and IT'S AUTOMATED"
 cover_image: ""
 description: Create a post that is version controlled in Github and auto-published using Github Actions
