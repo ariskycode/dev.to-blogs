@@ -13,8 +13,13 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@master
 
-      - name: Install Dependencies
-        uses: bahmutov/npm-install@v1
+      - name: Setup Nodejs
+        uses: actions/setup-node@v1
+          with:
+            node-version: '12.x'
+
+      - name: Install dependencies
+        run: yarn install
 
       - name: Run Prettier
         run: yarn run prettier:check
