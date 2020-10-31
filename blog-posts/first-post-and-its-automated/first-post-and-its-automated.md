@@ -3,7 +3,7 @@ published: true
 title: "First post and IT'S AUTOMATED"
 cover_image: ""
 description: "Create a post that is version controlled in Github and auto-published using Github Actions"
-tags: devto, publication, blogpost, continuousdeployment, github
+tags: devto, blogpost, continuousdeployment, github
 series:
 canonical_url:
 ---
