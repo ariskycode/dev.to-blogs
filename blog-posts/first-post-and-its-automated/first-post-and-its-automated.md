@@ -20,11 +20,11 @@ Credits to [Maxime](https://github.com/maxime1992) who created the [dev-to-git](
 
 Log in to your dev.to account, go into settings. You will find a DEV API Keys section under the Account tab. Give it a description if you want to, it's nice to know what you used it for if you have multiple keys. Click on Generate to generate your key.
 
-![Generate DEV.TO API Key by giving a description and clicking on the Generate button](./assets/generate-dev-key.png "Generate DEV.TO API Key")
+![Generate DEV.TO API Key by giving a description and clicking on the Generate button](https://raw.githubusercontent.com/ariskycode/dev.to-blogs/main/blog-posts/first-post-and-its-automated/assets/generate-dev-key.png "Generate DEV.TO API Key")
 
 When generated, the key will show up under active keys dropdown and will have a set of random characters with it. This is your token that you can use to access any of the dev.to API.
 
-![Generated DEV.TO API Key](./assets/get-dev-key-token.png "Generated DEV.TO API Key")
+![Generated DEV.TO API Key](https://raw.githubusercontent.com/ariskycode/dev.to-blogs/main/blog-posts/first-post-and-its-automated/assets/get-dev-key-token.png "Generated DEV.TO API Key")
 
 We will be needing this key when we set up the Github Actions workflow.
 
@@ -100,7 +100,7 @@ You can use this id and add it to `dev-to-git.json`.
 
 The package structure is completely upto you, but remember to give the correct path in `relativePathToArticle`. Here I have the directory blog-posts and will create folders for each blog post.
 
-![Project Structure](./assets/tree.png "Project Structure")
+![Project Structure](https://raw.githubusercontent.com/ariskycode/dev.to-blogs/main/blog-posts/first-post-and-its-automated/assets/tree.png "Project Structure")
 
 In your blog-name.md, you would need to add certain tags that would help you maintain everything from the repository itself.
 
@@ -170,7 +170,7 @@ This is a simple workflow that will checkout your repository, install the depend
 
 You would notice there is `secrets.DEV_TO_GIT_TOKEN` parameter in the dev-to-git step. You can add secrets to your repository so that no one else uses the API token you created in step 1. To add this to your repository, go into your repository settings. You will see a Secrets section. Add your API Key as a new secret and save it.
 
-![Github Secrets](./assets/github-secrets.png "Add your secret here")
+![Github Secrets](https://raw.githubusercontent.com/ariskycode/dev.to-blogs/main/blog-posts/first-post-and-its-automated/assets/github-secrets.png "Add your secret here")
 
 Now we are all done! All that is left is commit and push to your local repository!
 
@@ -180,17 +180,17 @@ Once you push your these changes to your master/main branch, Github Actions will
 
 If you want to see how your last deployment went or any previous history you can visit the Action tab on your Github repository
 
-![Github Actions Workflows](./assets/actions.png "You can see that our publish workflow successfully executed")
+![Github Actions Workflows](https://raw.githubusercontent.com/ariskycode/dev.to-blogs/main/blog-posts/first-post-and-its-automated/assets/actions.png "You can see that our publish workflow successfully executed")
 
 If we click on the workflow we can see all the steps and their logs.
 
-![Publish Workflow steps](./assets/publish-workflow.png "Publish Workflow steps")
+![Publish Workflow steps](https://raw.githubusercontent.com/ariskycode/dev.to-blogs/main/blog-posts/first-post-and-its-automated/assets/publish-workflow.png "Publish Workflow steps")
 
 If any of these steps fail we can see the logs here and fix the issues.
 
 Your blog is now and you're all done!
 
-![It is done](./assets/its-done.jpg "It's done, Sam. It's over.")
+![It is done](https://raw.githubusercontent.com/ariskycode/dev.to-blogs/main/blog-posts/first-post-and-its-automated/assets/its-done.jpg "It's done, Sam. It's over.")
 
 ### Step 6 - Profit?
 
@@ -206,7 +206,7 @@ You can checkout [Hack Sultan's explanation of Web Monetization](https://dev.to/
 
 Dev.to handles the meta tags for you. To set this up in Dev.to, go into your Settings and in the Misc Section you can add your payment pointer.
 
-![Dev.to enables web monetization in Misc settings](./assets/web-monetization.png "Infinite money, baby!")
+![Dev.to enables web monetization in Misc settings](https://raw.githubusercontent.com/ariskycode/dev.to-blogs/main/blog-posts/first-post-and-its-automated/assets/web-monetization.png "Infinite money, baby!")
 
 Voila! No ads and you still earn!
 
