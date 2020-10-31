@@ -190,7 +190,7 @@ If any of these steps fail we can see the logs here and fix the issues.
 
 Your blog is now and you're all done!
 
-![It is done](./assets/web-monetization.jpg 'It's done, Sam. It's over.')
+![It is done](./assets/its-done.jpg "It's done, Sam. It's over.")
 
 ### Step 6 - Profit?
 
