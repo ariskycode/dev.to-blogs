@@ -35,15 +35,46 @@ Here, it is all upto you. You want to create a repo for each blog post or a mono
 Create an empty repository.
 Add the following `package.json` for setting up dependencies.
 
-```js
-// ../../package.json
+<!-- embedme assets/package.json -->
+```json
+{
+  "name": "dev.to",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ariskycode/dev.to-blogs.git"
+  },
+  "scripts": {
+    "prettier": "prettier",
+    "embedme": "embedme blog-posts/**/*.md",
+    "prettier:base": "yarn run prettier \"**/*.{js,json,scss,md,ts,html,component.html}\"",
+    "prettier:write": "yarn run prettier:base --write",
+    "prettier:check": "yarn run prettier:base --list-different",
+    "embedme:check": "yarn run embedme --verify",
+    "embedme:write": "yarn run embedme",
+    "dev-to-git": "dev-to-git"
+  },
+  "dependencies": {
+    "dev-to-git": "1.1.0",
+    "embedme": "1.11.0",
+    "prettier": "1.18.2",
+    "yarn": "^1.22.10"
+  }
+}
+
 ```
 
 You would now need to create a `dev-to-git.json` file in the root directory of your repository. The dev-to-git tool would be using this file to publish your blogs.
 It is a simple array to hold all the blogs you want and each json object has two fields: `id` and `relativePathToArticle`. We will see how to retrieve this id when we create our first blog post.
 
-```js
-// ../../dev-to-git.json
+<!-- embedme assets/dev-to-git.json -->
+```json
+[
+  {
+    "id": 502153,
+    "relativePathToArticle": "./blog-posts/first-post-and-its-automated/first-post-and-its-automated.md"
+  }
+]
+
 ```
 
 We have used two dependencies; prettier and embedme. [Prettier](https://github.com/prettier/prettier) is for linting and can automatically fix issues in your repo. [Embedme](https://github.com/zakhenry/embedme) is used for embedding source code snippets into readmes, you simply provide the path and run embedme.
@@ -96,8 +127,42 @@ Github Actions is basically a CI/CD tool that allows you to build, test and depl
 Create a .github directory in the root directory and within that create a workflows folder.
 In the workflows folder, we will now define a yaml that will contain the steps the pipeline will run.
 
+<!-- embedme assets/workflow.yml -->
 ```yaml
-// ../../.github/workflows/publish.yml
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches-ignore: 
+      - main  
+
+jobs:
+  build:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run Prettier
+        run: yarn run prettier:check
+
+      - name: Run Embedme
+        run: yarn run embedme:check
+
+      - name: Deploy to dev.to
+        run: DEV_TO_GIT_TOKEN=${{ secrets.DEV_TO_GIT_TOKEN }} yarn run dev-to-git
 ```
 
 This is a simple workflow that will checkout your repository, install the dependencies, run prettier and embedme and then run the dev-to-git tool which will publish your posts to dev.to.
@@ -144,7 +209,8 @@ Dev.to handles the meta tags for you. To set this up in Dev.to, go into your Set
 
 Voila! No ads and you still earn!
 
-### Thank you for reading!
+
+## Thank you for reading!
 
 Thank you for reading and be sure to checkout the sources, they have created some other amazing stuff as well.
 
