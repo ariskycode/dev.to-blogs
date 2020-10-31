@@ -36,6 +36,7 @@ Create an empty repository.
 Add the following `package.json` for setting up dependencies.
 
 <!-- embedme assets/package.json -->
+
 ```json
 {
   "name": "dev.to",
@@ -60,13 +61,13 @@ Add the following `package.json` for setting up dependencies.
     "yarn": "^1.22.10"
   }
 }
-
 ```
 
 You would now need to create a `dev-to-git.json` file in the root directory of your repository. The dev-to-git tool would be using this file to publish your blogs.
 It is a simple array to hold all the blogs you want and each json object has two fields: `id` and `relativePathToArticle`. We will see how to retrieve this id when we create our first blog post.
 
 <!-- embedme assets/dev-to-git.json -->
+
 ```json
 [
   {
@@ -74,7 +75,6 @@ It is a simple array to hold all the blogs you want and each json object has two
     "relativePathToArticle": "./blog-posts/first-post-and-its-automated/first-post-and-its-automated.md"
   }
 ]
-
 ```
 
 We have used two dependencies; prettier and embedme. [Prettier](https://github.com/prettier/prettier) is for linting and can automatically fix issues in your repo. [Embedme](https://github.com/zakhenry/embedme) is used for embedding source code snippets into readmes, you simply provide the path and run embedme.
@@ -128,6 +128,7 @@ Create a .github directory in the root directory and within that create a workfl
 In the workflows folder, we will now define a yaml that will contain the steps the pipeline will run.
 
 <!-- embedme assets/workflow.yml -->
+
 ```yaml
 name: Publish
 
@@ -136,8 +137,8 @@ on:
     branches:
       - main
   pull_request:
-    branches-ignore: 
-      - main  
+    branches-ignore:
+      - main
 
 jobs:
   build:
@@ -150,7 +151,7 @@ jobs:
       - name: Setup Nodejs
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: "12.x"
 
       - name: Install dependencies
         run: yarn install
@@ -208,7 +209,6 @@ Dev.to handles the meta tags for you. To set this up in Dev.to, go into your Set
 ![Dev.to enables web monetization in Misc settings](./assets/web-monetization.png "Infinite money, baby!")
 
 Voila! No ads and you still earn!
-
 
 ## Thank you for reading!
 
